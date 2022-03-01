@@ -12,11 +12,11 @@ import {
   
   router
     .route("/")
-    .get( async (request, response) => {
+    .get(auth,async (request, response) => {
       const data = await Getdetail();
       response.send(data);
     })
-    .post( async (request, response) => {
+    .post( auth,async (request, response) => {
       const data = request.body;
       const detail = await CreateUserDetail(data);
       response.send(detail);
@@ -25,7 +25,7 @@ import {
   // To getdetail by id using get method //
   router
     .route("/:id")
-    .get( async (request, response) => {
+    .get(auth, async (request, response) => {
       const { id } = request.params;
       const result = await GetdetailById(id);
       response.send(result);
@@ -39,7 +39,7 @@ import {
       response.send(detail);
     }) //Edit detail using PUT Method//
   
-    .delete( async (request, response) => {
+    .delete(auth,async (request, response) => {
       const { id } = request.params;
       const result = await DeleteuserdetailbyId(id);
       result.deletedCount > 0
