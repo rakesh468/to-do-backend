@@ -6,6 +6,7 @@ import {
     Getdetail,
   } from "../helper.js";
   import express from "express";
+  import { auth } from "../middleware/auth.js";
   
   const router = express.Router();
   
@@ -30,7 +31,7 @@ import {
       response.send(result);
       console.log(result);
     })
-    .put(async (request, response) => {
+    .put(auth,async (request, response) => {
       const { id } = request.params;
       const data = request.body;
       const result = await UpdateuserDetailById(id, data);
