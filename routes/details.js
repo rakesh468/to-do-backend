@@ -12,11 +12,11 @@ import {
   
   router
     .route("/")
-    .get(async (request, response) => {
+    .get(auth,async (request, response) => {
       const data = await Getdetail();
       response.send(data);
     })
-    .post(auth,async (request, response) => {
+    .post( auth,async (request, response) => {
       const data = request.body;
       const detail = await CreateUserDetail(data);
       response.send(detail);
