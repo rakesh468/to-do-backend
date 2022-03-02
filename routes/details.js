@@ -12,7 +12,7 @@ import {
   
   router
     .route("/")
-    .get(auth,async (request, response) => {
+    .get(async (request, response) => {
       const data = await Getdetail();
       response.send(data);
     })
